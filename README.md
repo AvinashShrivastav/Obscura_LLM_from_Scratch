@@ -22,3 +22,12 @@ This chapter begins the process of preparing text data for model training.
 * **Token Cleaning:** Refined the tokenization process to strip leading/trailing whitespace from tokens and filter out any empty strings resulting from the split.
 * **Expanded Punctuation:** Extended the set of punctuation characters considered during splitting to include more common symbols.
 * **Application to Raw Text:** Applied the developed tokenization logic to the full `sample_data.txt`.
+
+### Vocabulary Creation and Custom Tokenizers:
+
+* **Asterisk Inclusion:** Modified the regular expression for tokenization to correctly handle asterisk characters.
+* **Vocabulary Generation:** Created a unique vocabulary of all tokens found in the preprocessed text and determined its size.
+* **`SimpleTokenizerV1`:** Implemented a basic tokenizer class that maps strings to integers (`str_to_int`) and vice-versa (`int_to_str`) based on the generated vocabulary. This tokenizer can encode text into numerical IDs and decode IDs back into text.
+* **Special Tokens:** Introduced special tokens `<|endoftext|>` (to denote the end of a text segment or document) and `<|unk|>` (for unknown tokens not present in the vocabulary).
+* **`SimpleTokenizerV2`:** Developed an improved tokenizer that handles out-of-vocabulary words by mapping them to the `<|unk|>` token, preventing errors during encoding.
+* **Text Concatenation:** Demonstrated how to concatenate multiple text snippets using the `<|endoftext|>` token, a common practice in LLM training for handling multiple documents or conversational turns.

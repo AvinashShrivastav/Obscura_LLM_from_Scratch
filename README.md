@@ -45,3 +45,14 @@ This chapter begins the process of preparing text data for model training.
 * **Token Embeddings:** Implemented a `torch.nn.Embedding` layer to convert discrete token IDs into continuous vector representations (embeddings). This layer learns a unique vector for each token in the vocabulary.
 * **Positional Embeddings:** Implemented a separate `torch.nn.Embedding` layer for positional encodings. These embeddings provide information about the absolute or relative position of each token within a sequence, which is crucial for Transformer models that lack inherent sequential processing.
 * **Embedding Combination (Conceptual):** Prepared the components that will later be combined (token embeddings + positional embeddings) to form the final input representation for the Transformer.
+
+## Chapter 3: Implementing Attention Mechanism
+
+This chapter begins the core implementation of the self-attention mechanism, a fundamental component of the Transformer architecture.
+
+### Core Self-Attention Logic:
+
+* **Dot Product Attention (Conceptual):** Explored the fundamental concept of attention by manually calculating attention scores using dot products between query and key vectors.
+* **Softmax Application:** Demonstrated how the softmax function is applied to attention scores to obtain attention weights, ensuring they sum to 1 and represent probabilities. A naive softmax implementation was also compared with `torch.softmax`.
+* **Context Vector Calculation:** Illustrated how context vectors are derived by taking a weighted sum of value vectors, where the weights are the attention weights.
+* **Matrix Multiplication for Efficiency:** Showcased how these manual calculations can be efficiently performed using matrix multiplication (`@`) for all tokens simultaneously, leading to a much faster computation.
